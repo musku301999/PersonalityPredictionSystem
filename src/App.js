@@ -1,7 +1,6 @@
 import logo from './logo.svg';
 // import './App.css';
 import { Container, Row,Col} from 'reactstrap';
-import Header from "./components/Header"
 import CandidateHomeMenu from './components/CandidateHomeMenu';
 import CandidateHomePage from './components/CandidateHomePage';
 import CreateCv from './components/CreateCv';
