@@ -12,6 +12,7 @@ import {
   Route,
   Link
 } from "react-router-dom";
+import ApllyJobHere from './components/ApllyJobHere';
 
 
 
@@ -32,6 +33,7 @@ function App() {
             <Route path="/" component={CandidateHomePage} exact></Route>
             <Route path="/create-cv" component={CreateCv} exact></Route>
             <Route path="/view-cv" component={ViewCv} exact></Route>
+            <Route path="/apply-job" component={ApllyJobHere} exact></Route>
             
           </Col>
         </Row>

@@ -22,7 +22,7 @@ const CandidateHomeMenu=(props)=>{
       </DropdownMenu>
     </Dropdown>
       </ListGroupItem>
-      <ListGroupItem tag="a" href="#!" action>Apply Job</ListGroupItem>
+      <ListGroupItem tag="a" href="/apply-job" action>Apply Job</ListGroupItem>
       <ListGroupItem tag="a" href="#!" action>View Results</ListGroupItem>
       <ListGroupItem tag="a" href="#!" action>Logout</ListGroupItem>
       

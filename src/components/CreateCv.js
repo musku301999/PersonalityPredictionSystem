@@ -30,7 +30,7 @@ function CreateCv(){
       <Label for="exp">Experience</Label>
         <Input type="text" name="exp" id="exp" placeholder="Enter your experience" />
 </FormGroup>
-      
+       
       <FormGroup>
         <Label for="skill">Skills</Label>
         <Input type="textarea" name="text" id="exampleText" placeholder= "Enter your technical skills"/>
