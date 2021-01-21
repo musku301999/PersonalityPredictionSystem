@@ -13,6 +13,9 @@ import {
   Link
 } from "react-router-dom";
 import ApllyJobHere from './components/ApllyJobHere';
+import HeaderComponent from './components/HeaderComponent';
+import FooterComponent from './components/FooterComponent';
+
 
 
 
@@ -21,7 +24,7 @@ function App() {
     <div >
      
 <Router><Container>
-      <Header/>
+      <HeaderComponent/>
         <Row>
           <Col md={4}>
          <CandidateHomeMenu/>  
@@ -37,6 +40,7 @@ function App() {
             
           </Col>
         </Row>
+        <FooterComponent/>
       </Container></Router>
       
 
