@@ -20,28 +20,35 @@ import AdminLogin from './components/AdminLogin';
 import About from './components/About';
 
 
-
 function App() {
   return (
     <div >
      
 <Router><Container>
       <HeaderComponent/>
-        {/* <Row> */}
-          {/* <Col md={4}>
+        <Row>
+          <Col md={4}>
          <CandidateHomeMenu/>  
           </Col>
-          <Col md={8}> */}
+          <Col md={8}>
             {/* <CandidateHomePage/> */}
             {/* <CreateCv/> */}
             {/* <ViewCv/> */}
-            <Route path="/" component={About} exact></Route>
-            {/* <Route path="/create-cv" component={CreateCv} exact></Route>
+           
+           
+           <Route path="/" component={CandidateHomePage} exact></Route>
+            
+          
+            
+
+
+            
+            <Route path="/create-cv" component={CreateCv} exact></Route>
             <Route path="/view-cv" component={ViewCv} exact></Route>
             <Route path="/apply-job" component={ApllyJobHere} exact></Route>
             
           </Col>
-        </Row> */}
+        </Row>
         <FooterComponent/>
       </Container></Router>
       

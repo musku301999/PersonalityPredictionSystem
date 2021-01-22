@@ -35,6 +35,7 @@ const About=()=>{
         </Card>
         <CardFooter className="text-muted">
         <Container className="text-center">
+        
         <Button color="danger mr-5" size="lg" outline >Admin</Button>
         <Button color="danger ml-5" size="lg" outline>Candidate</Button>
         </Container>
