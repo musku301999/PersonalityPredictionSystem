@@ -14,7 +14,10 @@ import {
 import ApllyJobHere from './components/ApllyJobHere';
 import HeaderComponent from './components/HeaderComponent';
 import FooterComponent from './components/FooterComponent';
-
+import Signup from './components/Signup';
+import CandidateLogin from './components/CandidateLogin'
+import AdminLogin from './components/AdminLogin';
+import About from './components/About';
 
 
 
@@ -24,21 +27,21 @@ function App() {
      
 <Router><Container>
       <HeaderComponent/>
-        <Row>
-          <Col md={4}>
+        {/* <Row> */}
+          {/* <Col md={4}>
          <CandidateHomeMenu/>  
           </Col>
-          <Col md={8}>
+          <Col md={8}> */}
             {/* <CandidateHomePage/> */}
             {/* <CreateCv/> */}
             {/* <ViewCv/> */}
-            <Route path="/" component={CandidateHomePage} exact></Route>
-            <Route path="/create-cv" component={CreateCv} exact></Route>
+            <Route path="/" component={About} exact></Route>
+            {/* <Route path="/create-cv" component={CreateCv} exact></Route>
             <Route path="/view-cv" component={ViewCv} exact></Route>
             <Route path="/apply-job" component={ApllyJobHere} exact></Route>
             
           </Col>
-        </Row>
+        </Row> */}
         <FooterComponent/>
       </Container></Router>
       
