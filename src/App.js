@@ -18,13 +18,16 @@ import Signup from './components/Signup';
 import CandidateLogin from './components/CandidateLogin'
 import AdminLogin from './components/AdminLogin';
 import About from './components/About';
+import { ToastContainer, toast } from 'react-toastify';
 
 
 function App() {
   return (
     <div >
      
-<Router><Container>
+<Router>
+  <ToastContainer/>
+  <Container>
       <HeaderComponent/>
         <Row>
           <Col md={4}>
