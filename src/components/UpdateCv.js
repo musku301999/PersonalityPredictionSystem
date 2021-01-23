@@ -54,25 +54,7 @@ this.setState({
       
   }
 
-//   cancel = () => {
-//     this.setState({
-//       name: '',
-//       email: '',
-//       number: '',
-//       qual: '',
-//       exp: '',
-//       skill: '',
-//       nameError: '',
-//       emailError: '',
-//       numberError: '',
-//       numberLengthError:'',
-//       qualError: '',
-//       expError: '',
-//       skillError: ''
 
-
-//     });
-//   }
   validate = () => {
     const validEmailRegex = 
   RegExp(/^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i);
