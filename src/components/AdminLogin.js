@@ -34,7 +34,7 @@ import {Card,
               type="password"
               name="password"
               id="examplePassword"
-              placeholder="********"
+              placeholder="Eneter Your Password."
             />
           </FormGroup>
           
