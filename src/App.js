@@ -5,6 +5,7 @@ import CandidateHomeMenu from './components/CandidateHomeMenu';
 import CandidateHomePage from './components/CandidateHomePage';
 import CreateCv from './components/CreateCv';
 import ViewCv from './components/ViewCv';
+import UpdateCv from './components/UpdateCv'
 import {
   BrowserRouter as Router,
   Switch,
@@ -49,6 +50,7 @@ function App() {
             <Route path="/create-cv" component={CreateCv} exact></Route>
             <Route path="/view-cv" component={ViewCv} exact></Route>
             <Route path="/apply-job" component={ApllyJobHere} exact></Route>
+            <Route path = "/updatecv/:email" component={UpdateCv}></Route>
             
           </Col>
         </Row>
