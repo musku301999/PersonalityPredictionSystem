@@ -1,4 +1,3 @@
-import React from "react";
 
 import {
     Card,
@@ -12,11 +11,23 @@ import {
     Container,
 } from "reactstrap";
 
+import React, { Component } from 'react';
 
-
-const About=()=>{
-    return(
-        <div className="text-center" style={{ width: '100%',height:"100%" }}>
+class About extends Component {
+    constructor(props) {
+        super(props)
+        this.admin=this.admin.bind(this);
+this.candidate=this.candidate.bind(this)
+    }
+    admin(){
+        this.props.history.push('/admin-login')
+    }
+    candidate(){
+        this.props.history.push('/candidate-login')
+    }
+    render() {
+        return (
+            <div className="text-center" style={{ width: '100%',height:"100%" }}>
         <Jumbotron>
         <span class="border border-primary">
         <Card className="text-center mb-1" style={{ width: '100%',height:"100%" }}>
@@ -36,15 +47,15 @@ const About=()=>{
         <CardFooter className="text-muted">
         <Container className="text-center">
         
-        <Button color="danger mr-5" size="lg" outline >Admin</Button>
-        <Button color="danger ml-5" size="lg" outline>Candidate</Button>
+        <Button color="danger mr-5" size="lg" outline onClick={this.admin} >Admin</Button>
+        <Button color="danger ml-5" size="lg" outline onClick={this.candidate}>Candidate</Button>
         </Container>
         </CardFooter>
         </span>
         </Jumbotron>
         </div>
-    );
+        );
+    }
+}
 
-};
-
-export default About; 
+export default About;

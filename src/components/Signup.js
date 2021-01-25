@@ -10,7 +10,8 @@ import {Card,
   Container, Col, Row, Button, Form, FormGroup, Label, Input } from 'reactstrap';
  const Signup = (props) => {
   return (
-    <span className="block-example border border-dark">
+    <div style={{ 'position': 'relative', 'overflowY': 'auto', 'height': '60vh', 'display': 'block' }}>
+      <span className="block-example border border-dark">
     <Card className="text-center mb-1" style={{ width: '100%',height:"100%" }}>
     <CardBody>
     <Container className="text-center">
@@ -52,11 +53,16 @@ import {Card,
 
         </Col>
         <Button color="danger" size="lg" outline >SIGN UP</Button>
+        <div>
+          <a href="/candidate-login"> Already a user? Click Here</a>
+        </div>
       </Form>
     </Container>
     </CardBody>
     </Card>
     </span>
+    </div>
+    
   );
 }
 

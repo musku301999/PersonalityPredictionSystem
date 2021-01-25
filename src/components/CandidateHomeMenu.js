@@ -8,7 +8,7 @@ const CandidateHomeMenu=(props)=>{
   const toggle = () => setDropdownOpen(prevState => !prevState);
     return(
         <ListGroup style={{height:"100%"}}>
-            <ListGroupItem tag="a" href="/" action>Home</ListGroupItem>
+            <ListGroupItem tag="a" href="/home" action>Home</ListGroupItem>
       <ListGroupItem tag="a" href="#!" action>
       <Dropdown isOpen={dropdownOpen} toggle={toggle}>
       <DropdownToggle caret color="white">

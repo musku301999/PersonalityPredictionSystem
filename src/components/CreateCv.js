@@ -1,10 +1,11 @@
 import { ToastContainer, toast } from 'react-toastify';
-import { Button, Form, FormGroup, Label, Input, FormText,Alert } from 'reactstrap';
+import { Button, Form, FormGroup, Label, Input, FormText,Alert, Container, Row, Col } from 'reactstrap';
 import axios from 'axios';
 import baseUrl from '../services/BootApi'
 
 import React, { Component } from 'react';
 import CandidateCvServices from '../services/CandidateCvServices';
+import CandidateHomeMenu from './CandidateHomeMenu';
 
 class CreateCv extends Component {
   constructor(props) {
@@ -143,7 +144,16 @@ class CreateCv extends Component {
 
   render() {
     return (
-      <div style={{ 'position': 'relative', 'overflowY': 'auto', 'height': '60vh', 'display': 'block' }}>
+      <div>
+        <Container>
+          <Row>
+            <Col md={4}>
+              <CandidateHomeMenu/>
+
+            </Col>
+            <Col md={8}>
+
+            <div style={{ 'position': 'relative', 'overflowY': 'auto', 'height': '60vh', 'display': 'block' }}>
         <ToastContainer/>
         <div>
           <div style={{ textAlign: "center", fontFamily: "monospace" }}>
@@ -200,6 +210,11 @@ class CreateCv extends Component {
           </Form>
         </div>
 
+      </div>
+            
+            </Col>
+          </Row>
+        </Container>
       </div>
     );
   }

@@ -1,4 +1,4 @@
-import React from 'react';
+
 import {Card,
   CardBody,
   CardTitle,
@@ -8,9 +8,20 @@ import {Card,
   Jumbotron,
   
   Container, Col, Row, Button, Form, FormGroup, Label, Input } from 'reactstrap';
- const CandidateLogin = (props) => {
-  return (
-    <span className="block-example border border-dark">
+  import React, { Component } from 'react';
+  
+  class CandidateLogin extends Component {
+    constructor(props) {
+      super(props);
+      this.home=this.home.bind(this);
+    }
+    home(){
+      this.props.history.push("/home")
+    }
+    render() {
+      return (
+        <div>
+          <span className="block-example border border-dark">
     <Card className="text-center mb-1" style={{ width: '100%',height:"100%" }}>
     <CardBody>
     <Container className="text-center">
@@ -39,13 +50,20 @@ import {Card,
           </FormGroup>
           
         </Col>
-        <Button color="danger" size="lg" outline >Login</Button>
+        <Button color="danger" size="lg" outline onClick={this.home}>Login</Button>
+        <div>
+        <a href="/candidate-register"> Not a user? Click Here</a>
+        </div>
+        
       </Form>
     </Container>
     </CardBody>
     </Card>
     </span>
-  );
-}
-
-export default CandidateLogin;
+        </div>
+      );
+    }
+  }
+  
+  export default CandidateLogin;
+ 

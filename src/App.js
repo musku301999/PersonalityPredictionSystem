@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 // import './App.css';
-import { Container, Row,Col} from 'reactstrap';
+import { Container, Row, Col } from 'reactstrap';
 import CandidateHomeMenu from './components/CandidateHomeMenu';
 import CandidateHomePage from './components/CandidateHomePage';
 import CreateCv from './components/CreateCv';
@@ -19,43 +19,28 @@ import CandidateLogin from './components/CandidateLogin'
 import AdminLogin from './components/AdminLogin';
 import About from './components/About';
 import { ToastContainer, toast } from 'react-toastify';
-
+import CandidateModule from './components/CandidateModule';
 
 function App() {
+  
   return (
     <div >
-     
 <Router>
-  <ToastContainer/>
-  <Container>
-      <HeaderComponent/>
-        <Row>
-          <Col md={4}>
-         <CandidateHomeMenu/>  
-          </Col>
-          <Col md={8}>
-            {/* <CandidateHomePage/> */}
-            {/* <CreateCv/> */}
-            {/* <ViewCv/> */}
-           
-           
-           <Route path="/" component={CandidateHomePage} exact></Route>
-            
-          
-            
+<Container>
+<HeaderComponent/>
+<Route path="/" component={About} exact></Route>
+<Route path="/admin-login" component={AdminLogin} exact></Route>
+<Route path="/candidate-login" component={CandidateLogin} exact></Route>
+<Route path="/candidate-register" component={Signup} exact></Route>
+<Route path="/home" component={CandidateHomePage} exact></Route>
+<Route path="/create-cv" component={CreateCv} exact></Route>
+<Route path="/view-cv" component={ViewCv} exact></Route>
+<FooterComponent/>
 
+</Container>
+</Router>
 
-            
-            <Route path="/create-cv" component={CreateCv} exact></Route>
-            <Route path="/view-cv" component={ViewCv} exact></Route>
-            <Route path="/apply-job" component={ApllyJobHere} exact></Route>
-            
-          </Col>
-        </Row>
-        <FooterComponent/>
-      </Container></Router>
-      
-
+        
     </div>
   );
 }
