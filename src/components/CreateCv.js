@@ -1,7 +1,7 @@
 import { ToastContainer, toast } from 'react-toastify';
 import { Button, Form, FormGroup, Label, Input, FormText,Alert, Container, Row, Col } from 'reactstrap';
 import axios from 'axios';
-import baseUrl from '../services/BootApi'
+
 
 import React, { Component } from 'react';
 import CandidateCvServices from '../services/CandidateCvServices';

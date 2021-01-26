@@ -1,19 +1,38 @@
-import React from 'react'
+
 import '../App.css'
-import {Jumbotron, Container, Button} from "reactstrap"
-const Home=()=>{
-    return(
-        <div>
-        <Jumbotron className="text-right bg-info ">
+import {Jumbotron, Container, Button ,Row,Col} from "reactstrap"
+import React, { Component } from 'react';
+import AdminHomeMenu from './AdminHomeMenu';
+
+class Home extends Component {
+  render() {
+    return (
+      <div>
         <Container>
+          <Row>
+            <Col md={4}>
+              <AdminHomeMenu/>
+            </Col>
+            <Col md={8}>
+            <div>
+        <Jumbotron>
+        <h1>
+          Welcome Admin
+        </h1>
   
-      <img className="text-left" src="logo/job.jpg"  rounded />
-        <h1 className="font-weight-bold" tag="h1">Personality Prediction System</h1>
-     </Container>
+      
         </Jumbotron>
   
         </div>
+            </Col>
+          </Row>
+        </Container>
+         
 
-    )
+      </div>
+    );
+  }
 }
+
+
 export default Home;

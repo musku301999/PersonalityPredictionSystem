@@ -1,7 +1,8 @@
 import React from 'react'
-import{Jumbotron,Card, CardBody,CardTitle, CardSubtitle, CardText,CardFooter,Button , Container } from "reactstrap"
+import{Jumbotron,Card, CardBody,CardTitle, CardSubtitle, CardText,CardFooter,Button , Container, Row,Col} from "reactstrap"
 import { ListGroup,ListGroupItem,Dropdown,DropdownItem,DropdownToggle,DropdownMenu} from "reactstrap";
 import { useState } from 'react';
+import CandidateHomeMenu from './CandidateHomeMenu';
 
 
 const ApllyJobHere =()=>{
@@ -10,10 +11,14 @@ const ApllyJobHere =()=>{
     const toggle = () => setDropdownOpen(prevState => !prevState);
 return(
 
-
-    
-
-    <Card>
+<div>
+  <Container>
+    <Row>
+      <Col md={4}>
+      <CandidateHomeMenu/>
+      </Col>
+      <Col md={8}>
+      <Card>
     
 
 <ListGroup style={{height:"100%"}}>
@@ -75,6 +80,13 @@ return(
 
         
     </Card>
+      </Col>
+    </Row>
+  </Container>
+</div>
+    
+
+    
 
 )
 }
