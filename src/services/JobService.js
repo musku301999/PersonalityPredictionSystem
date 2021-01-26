@@ -13,11 +13,11 @@ class JobService {
     }
 
     getJobById(id) {
-        return axios.get("http://localhost:8080/job/admin/get/"+ id);
+        return axios.get("http://localhost:8080/job/admin/get/" + id);
     }
 
     updateJob(job, id) {
-        return axios.put("http://localhost:8080/job/update/"+ id, job);
+        return axios.put("http://localhost:8080/job/update/" + id, job);
     }
 
     deleteJob(id) {

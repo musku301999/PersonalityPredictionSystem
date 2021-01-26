@@ -46,8 +46,8 @@ function App() {
           <Route path="/job" component={JobList} exact></Route>
           <Route path="/create-job" component={CreateJob} exact></Route>
           <Route path="/updatejob/:id" component={UpdateJob} exact></Route>
-          <Route path="/updatecv/:email"  component={UpdateCv} exact></Route>
-          
+          <Route path="/updatecv/:email" component={UpdateCv} exact></Route>
+
           <FooterComponent />
 
         </Container>

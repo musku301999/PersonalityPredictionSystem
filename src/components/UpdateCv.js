@@ -1,5 +1,5 @@
 import { ToastContainer, toast } from 'react-toastify';
-import { Button, Form, FormGroup, Label, Input, FormText,Alert, Container ,Col,Row} from 'reactstrap';
+import { Button, Form, FormGroup, Label, Input, FormText, Alert, Container, Col, Row } from 'reactstrap';
 import axios from 'axios';
 import baseUrl from '../services/BootApi'
 
@@ -21,7 +21,7 @@ class UpdateCv extends Component {
       candidateNameError: '',
       emailError: '',
       phoneNoError: '',
-      phoneNoLengthError:'',
+      phoneNoLengthError: '',
       qualificationError: '',
       experienceError: '',
       skillError: ''
@@ -38,58 +38,58 @@ class UpdateCv extends Component {
     this.updateCv = this.updateCv.bind(this);
 
   }
-  componentDidMount(){
-      CandidateCvServices.getCvByEmail(this.state.email).then((res)=>{
-let cv =res.data;
-this.setState({
-    candidateName: cv.candidateName,
-    email: cv.email,
-    phoneNo: cv.phoneNo,
-    
-      qualification: cv.qualification,
-      experience: cv.experience,
-       skill: cv.skill
+  componentDidMount() {
+    CandidateCvServices.getCvByEmail(this.state.email).then((res) => {
+      let cv = res.data;
+      this.setState({
+        candidateName: cv.candidateName,
+        email: cv.email,
+        phoneNo: cv.phoneNo,
 
-         })
+        qualification: cv.qualification,
+        experience: cv.experience,
+        skill: cv.skill
+
       })
-      
+    })
+
   }
 
 
   validate = () => {
-    const validEmailRegex = 
-  RegExp(/^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i);
+    const validEmailRegex =
+      RegExp(/^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i);
     let candidateNameError = '';
     let emailError = '';
     let phoneNoError = '';
-    let phoneNoLengthError='';
+    let phoneNoLengthError = '';
     let qualificationError = '';
     let experienceError = '';
     let skillError = '';
-    if (!this.state.candidateName){
+    if (!this.state.candidateName) {
       candidateNameError = "Name cannot be blank";
     }
-    if (!validEmailRegex.test(this.state.email)){
+    if (!validEmailRegex.test(this.state.email)) {
       emailError = "Invalid email";
     }
-    if (!this.state.phoneNo){
+    if (!this.state.phoneNo) {
       phoneNoError = "Number cannot be blank";
     }
-    if (!this.state.qualification){
+    if (!this.state.qualification) {
       qualificationError = "Qualification cannot be blank";
     }
-    if (!this.state.experience){
+    if (!this.state.experience) {
       experienceError = "Experience cannot be blank";
     }
-    if (!this.state.skill){
+    if (!this.state.skill) {
       skillError = "Skill cannot be blank";
     }
-    if (this.state.phoneNo.length!=10){
-      phoneNoLengthError="Mobile number should be of 10 digits"
+    if (this.state.phoneNo.length != 10) {
+      phoneNoLengthError = "Mobile number should be of 10 digits"
     }
 
-    if (emailError ||candidateNameError||phoneNoError||qualificationError||experienceError||skillError||phoneNoLengthError) {
-      this.setState({ emailError ,candidateNameError,phoneNoError,qualificationError,experienceError,skillError,phoneNoLengthError});
+    if (emailError || candidateNameError || phoneNoError || qualificationError || experienceError || skillError || phoneNoLengthError) {
+      this.setState({ emailError, candidateNameError, phoneNoError, qualificationError, experienceError, skillError, phoneNoLengthError });
       return false;
     }
     return true;
@@ -102,22 +102,22 @@ this.setState({
     const isValid = this.validate();
     let cv = {
       candidateName: this.state.candidateName, email: this.state.email,
-       phoneNo: this.state.phoneNo, experience: this.state.experience,
+      phoneNo: this.state.phoneNo, experience: this.state.experience,
       qualification: this.state.qualification, skill: this.state.skill
     };
-   if (isValid) {
+    if (isValid) {
       console.log("cv:" + JSON.stringify(cv));
-    
-      
+
+
       CandidateCvServices.updateCv(cv, this.state.email).then(res => {
         this.props.history.push('/view-cv')
-       toast.success("Cv created succesfully.") 
-       this.cancel();
+        toast.success("Cv created succesfully.")
+        this.cancel();
 
 
-     }, error => {
-       toast.error("You cannot create cv with same email! ")
-       this.cancel();
+      }, error => {
+        toast.error("You cannot create cv with same email! ")
+        this.cancel();
       });
     }
   }
@@ -143,7 +143,7 @@ this.setState({
   }
   cancel() {
     this.props.history.push('/view-cv');
-}
+  }
 
 
   render() {
@@ -152,73 +152,73 @@ this.setState({
         <Container>
           <Row>
             <Col md={4}>
-              <AdminHomeMenu/>
+              <AdminHomeMenu />
             </Col>
             <Col md={8}>
-            <div style={{ 'position': 'relative', 'overflowY': 'auto', 'height': '60vh', 'display': 'block' }}>
-       
-       <div>
-         <div style={{ textAlign: "center", fontFamily: "monospace" }}>
-           <h1> Update Your Cv</h1>
-         </div>
-        
-         <Form id="form">
-         
-           <FormGroup>
-             <Label for="name">Name</Label>
-             <Input type="text" name="name" id="name" placeholder="Enter your Full Name"
-               value={this.state.candidateName} onChange={this.candidateNameChangeHandler} />
-             <div style={{color:"red"}}>{this.state.candidateNameError}</div>
-           </FormGroup>
-           <FormGroup>
-             <Label for="email">Email</Label>
-             <Input type="email" name="email" id="email" placeholder="Enter your Email"
-               value={this.state.email} onChange={this.emailChangeHandler} />
-             <div style={{color:"red"}}>{this.state.emailError}</div>
-           </FormGroup>
-           <FormGroup>
-             <Label for="number">Phone Number</Label>
-             <Input type="number" name="number" id="number" placeholder="Enter your Phone number"
-               value={this.state.phoneNo} onChange={this.phoneNoChangeHandler} />
-             <div style={{color:"red"}} >{this.state.phoneNoError}</div>
-             <div style={{color:"red"}} >{this.state.phoneNoLengthError}</div>
-           </FormGroup>
+              <div style={{ 'position': 'relative', 'overflowY': 'auto', 'height': '60vh', 'display': 'block' }}>
 
-           <FormGroup>
-             <Label for="qual">Qualification</Label>
-             <Input type="text" name="qual" id="qual" placeholder="Enter your Qualification"
-               value={this.state.qualification} onChange={this.qualificationChangeHandler} />
+                <div>
+                  <div style={{ textAlign: "center", fontFamily: "monospace" }}>
+                    <h1> Update Your Cv</h1>
+                  </div>
 
-             <div style={{color:"red"}}>{this.state.qualificationError}</div>
-           </FormGroup>
-           <FormGroup>
-             <Label for="exp">Experience</Label>
-             <Input type="text" name="exp" id="exp" placeholder="Enter your experience"
-               value={this.state.experience} onChange={this.experienceChangeHandler} />
-             <div style={{color:"red"}}>{this.state.experienceError}</div>
-           </FormGroup>
+                  <Form id="form">
 
-           <FormGroup>
-             <Label for="skill">Skills</Label>
-             <Input type="text" name="skill" id="skill" placeholder="Enter your technical skills"
-               value={this.state.skill} onChange={this.skillChangeHandler}/>
-             <div style={{color:"red"}}>{this.state.skillError}</div>
-           </FormGroup>
+                    <FormGroup>
+                      <Label for="name">Name</Label>
+                      <Input type="text" name="name" id="name" placeholder="Enter your Full Name"
+                        value={this.state.candidateName} onChange={this.candidateNameChangeHandler} />
+                      <div style={{ color: "red" }}>{this.state.candidateNameError}</div>
+                    </FormGroup>
+                    <FormGroup>
+                      <Label for="email">Email</Label>
+                      <Input type="email" name="email" id="email" placeholder="Enter your Email"
+                        value={this.state.email} onChange={this.emailChangeHandler} />
+                      <div style={{ color: "red" }}>{this.state.emailError}</div>
+                    </FormGroup>
+                    <FormGroup>
+                      <Label for="number">Phone Number</Label>
+                      <Input type="number" name="number" id="number" placeholder="Enter your Phone number"
+                        value={this.state.phoneNo} onChange={this.phoneNoChangeHandler} />
+                      <div style={{ color: "red" }} >{this.state.phoneNoError}</div>
+                      <div style={{ color: "red" }} >{this.state.phoneNoLengthError}</div>
+                    </FormGroup>
+
+                    <FormGroup>
+                      <Label for="qual">Qualification</Label>
+                      <Input type="text" name="qual" id="qual" placeholder="Enter your Qualification"
+                        value={this.state.qualification} onChange={this.qualificationChangeHandler} />
+
+                      <div style={{ color: "red" }}>{this.state.qualificationError}</div>
+                    </FormGroup>
+                    <FormGroup>
+                      <Label for="exp">Experience</Label>
+                      <Input type="text" name="exp" id="exp" placeholder="Enter your experience"
+                        value={this.state.experience} onChange={this.experienceChangeHandler} />
+                      <div style={{ color: "red" }}>{this.state.experienceError}</div>
+                    </FormGroup>
+
+                    <FormGroup>
+                      <Label for="skill">Skills</Label>
+                      <Input type="text" name="skill" id="skill" placeholder="Enter your technical skills"
+                        value={this.state.skill} onChange={this.skillChangeHandler} />
+                      <div style={{ color: "red" }}>{this.state.skillError}</div>
+                    </FormGroup>
 
 
-           <Button type="submit" color="info" onClick={this.updateCv}>Submit</Button>
-           <Button color="danger ml-3" onClick={this.cancel.bind(this)}>Cancel</Button>
-         
+                    <Button type="submit" color="info" onClick={this.updateCv}>Submit</Button>
+                    <Button color="danger ml-3" onClick={this.cancel.bind(this)}>Cancel</Button>
 
-         </Form>
-       </div>
 
-     </div>
+                  </Form>
+                </div>
+
+              </div>
             </Col>
           </Row>
         </Container>
       </div>
-     
+
     );
   }
 }

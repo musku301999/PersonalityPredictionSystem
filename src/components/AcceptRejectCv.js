@@ -40,20 +40,20 @@ class AcceptRejectCv extends Component {
 
     render() {
 
-        const handleBtnA= () =>{
+        const handleBtnA = () => {
             toast.success("Applicant has been accepted :)", {
                 position: 'top-center'
             });
         };
-    
-        const handleBtnR= () =>{
+
+        const handleBtnR = () => {
             toast.error("Applicant has been rejected :(", {
                 position: 'top-center'
             });
         };
 
         return (
-            <div style={{height: '60vh', borderStyle : 'groove', borderWidth : '1px' }}>
+            <div style={{ height: '60vh', borderStyle: 'groove', borderWidth: '1px' }}>
                 <Form className='mt-3'>
                     <FormGroup row className='ml-5'>
                         <Label for='candidateEmail' sm={3}>Candidate Email</Label>

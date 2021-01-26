@@ -78,53 +78,53 @@ class UpdateJob extends Component {
                 <Container>
                     <Row>
                         <Col md={4}>
-                            <AdminHomeMenu/>
+                            <AdminHomeMenu />
                         </Col>
                         <Col md={8}>
-                        <div style={{ 'position': 'relative', 'overflowY': 'auto', 'height': '60vh', 'display': 'block' }}>
-                <h3>Update Job</h3>
-                <br />
-                <Form>
-                    <FormGroup row>
-                    <Label for='jobDescription' sm={5}>Job Description</Label>
-                        <Col sm={6}>
-                        <Input placeholder="Enter title here" name="description"
-                            value={this.state.jobDes} onChange={this.changeJobDesHandler}></Input>
-                            </Col>
-                    </FormGroup>
-                    <FormGroup row>
-                    <Label for='requiredSkill' sm={5}>Required Skills</Label>
-                    <Col sm={6}>
-                        <Input placeholder="Enter description here" name="skills"
-                            value={this.state.reqSkills} onChange={this.changeReqSkillsHandler}></Input>
-                            </Col>
-                    </FormGroup>
-                    <FormGroup row>
-                    <Label for='experience' sm={5}>Required Experience</Label>
-                    <Col sm={6}>
-                        <Input placeholder="Enter experience here" name="experience"
-                            value={this.state.experience} onChange={this.changeExpHandler}></Input>
-                            </Col>
-                    </FormGroup>
-                    <FormGroup row>
-                    <Label for='qualification' sm={5}>Required Qualification</Label>
-                    <Col sm={6}>
-                        <Input placeholder="Enter qualification here" name="qualification"
-                            value={this.state.qualification} onChange={this.changeQualHandler}></Input>
-                            </Col>
-                    </FormGroup>
-                    <Container>
-                        <br />
-                        <Button color="info" onClick={this.updateJob}>Update</Button>
-                        <Button color="danger ml-3" onClick={this.cancel.bind(this)}>Cancel</Button>
-                    </Container>
-                </Form>
-            </div>
+                            <div style={{ 'position': 'relative', 'overflowY': 'auto', 'height': '60vh', 'display': 'block' }}>
+                                <h3>Update Job</h3>
+                                <br />
+                                <Form>
+                                    <FormGroup row>
+                                        <Label for='jobDescription' sm={5}>Job Description</Label>
+                                        <Col sm={6}>
+                                            <Input placeholder="Enter title here" name="description"
+                                                value={this.state.jobDes} onChange={this.changeJobDesHandler}></Input>
+                                        </Col>
+                                    </FormGroup>
+                                    <FormGroup row>
+                                        <Label for='requiredSkill' sm={5}>Required Skills</Label>
+                                        <Col sm={6}>
+                                            <Input placeholder="Enter description here" name="skills"
+                                                value={this.state.reqSkills} onChange={this.changeReqSkillsHandler}></Input>
+                                        </Col>
+                                    </FormGroup>
+                                    <FormGroup row>
+                                        <Label for='experience' sm={5}>Required Experience</Label>
+                                        <Col sm={6}>
+                                            <Input placeholder="Enter experience here" name="experience"
+                                                value={this.state.experience} onChange={this.changeExpHandler}></Input>
+                                        </Col>
+                                    </FormGroup>
+                                    <FormGroup row>
+                                        <Label for='qualification' sm={5}>Required Qualification</Label>
+                                        <Col sm={6}>
+                                            <Input placeholder="Enter qualification here" name="qualification"
+                                                value={this.state.qualification} onChange={this.changeQualHandler}></Input>
+                                        </Col>
+                                    </FormGroup>
+                                    <Container>
+                                        <br />
+                                        <Button color="info" onClick={this.updateJob}>Update</Button>
+                                        <Button color="danger ml-3" onClick={this.cancel.bind(this)}>Cancel</Button>
+                                    </Container>
+                                </Form>
+                            </div>
                         </Col>
                     </Row>
                 </Container>
             </div>
-            
+
         );
     }
 }

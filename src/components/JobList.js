@@ -44,9 +44,9 @@ class JobList extends Component {
                 <Container>
                     <Row>
                         <Col md={3}>
-                        <AdminHomeMenu />
+                            <AdminHomeMenu />
                         </Col>
-                        
+
                         <Col md={9}>
                             <Fragment>
                                 <div style={{ 'position': 'relative', 'overflowY': 'auto', 'height': '50vh', 'display': 'block' }}>

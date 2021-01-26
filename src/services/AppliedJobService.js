@@ -6,7 +6,7 @@ class AppliedJobService {
         return axios.get("http://localhost:8080/appliedJob/getall");
     }
 
-    getAppliedJobById(id){
+    getAppliedJobById(id) {
         return axios.get("http://localhost:8080/appliedJob/get/" + id);
     }
 }
