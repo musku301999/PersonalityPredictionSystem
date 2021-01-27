@@ -4,14 +4,20 @@ import AppliedJobService from '../services/AppliedJobService';
 import AdminHomeMenu from './AdminHomeMenu';
 // import SearchByParam from './SearchByParam';
 // import CvService from '../services/CvService'
-
+import { Redirect } from 'react-router-dom';
 class ReviewCv extends Component {
 
     constructor(props) {
         super(props)
+        const token = localStorage.getItem("token1")
+    let loggedIn = true;
+    if (token == null) {
+      loggedIn = false;
+    }
 
         this.state = {
-            applicants: []
+            applicants: [],
+            loggedIn
         }
 
         this.reviewCv = this.reviewCv.bind(this);
@@ -28,6 +34,10 @@ class ReviewCv extends Component {
     }
 
     render() {
+        if(this.state.loggedIn==false){
+            return <Redirect to="/admin-login" />
+            
+        }
         return (
             <div>
                 <Container>

@@ -1,6 +1,7 @@
 import { ToastContainer, toast } from 'react-toastify';
 import { Button, Form, FormGroup, Label, Input, FormText, Alert, Container, Row, Col } from 'reactstrap';
 import axios from 'axios';
+import { Redirect } from 'react-router-dom';
 
 
 import React, { Component } from 'react';
@@ -10,6 +11,12 @@ import CandidateHomeMenu from './CandidateHomeMenu';
 class CreateCv extends Component {
   constructor(props) {
     super(props)
+    const token = localStorage.getItem("token")
+    let loggedIn = true;
+    if (token == null) {
+      loggedIn = false;
+    }
+
     this.state = {
       name: '',
       email: '',
@@ -25,7 +32,9 @@ class CreateCv extends Component {
       qualError: '',
       expError: '',
       skillError: '',
-      appliedjobError: ''
+      appliedjobError: '',
+      loggedIn
+     
 
 
     }
@@ -58,6 +67,7 @@ class CreateCv extends Component {
       expError: '',
       skillError: '',
       appliedjobError: ''
+      
 
 
     });
@@ -155,6 +165,10 @@ class CreateCv extends Component {
 
 
   render() {
+    if(this.state.loggedIn==false){
+      return <Redirect to="/candidate-login" />
+      
+  }
     return (
       <div>
         <Container>

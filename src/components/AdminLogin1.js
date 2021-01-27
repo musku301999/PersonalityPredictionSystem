@@ -5,12 +5,14 @@ import Adminservice from '../services/Adminservice'
 class AdminLogin1 extends Component {
     constructor(props) {
         super(props);
+        let loggedIn=false
         this.state = {
 
             email: '',
             password: '',
             emailError: "",
-            passError: ""
+            passError: "",
+            loggedIn
         }
 
         this.changeCandidateEmailHandler = this.changeCandidateEmailHandler.bind(this);
@@ -55,6 +57,9 @@ class AdminLogin1 extends Component {
         };
         console.log(JSON.stringify(admin));
         Adminservice.createAdmin(admin).then(res => {
+            localStorage.setItem("token1","abc")
+        
+            this.setState({loggedIn:true});
             console.log("success")
             this.props.history.push("/admin")
         })

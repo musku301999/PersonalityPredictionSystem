@@ -12,12 +12,15 @@ import {
 } from "reactstrap";
 
 import React, { Component } from 'react';
+import Login from './Login';
+
 
 class About extends Component {
     constructor(props) {
         super(props)
         this.admin = this.admin.bind(this);
         this.candidate = this.candidate.bind(this)
+       
     }
     admin() {
         this.props.history.push('/admin-login')
@@ -25,14 +28,17 @@ class About extends Component {
     candidate() {
         this.props.history.push('/candidate-login')
     }
+
     render() {
-        return (
+        
+         return (
+            
             <div className="text-center" style={{ width: '100%', height: "100%" }}>
                 <Jumbotron>
                     <span class="border border-primary">
                         <Card className="text-center mb-1" style={{ width: '100%', height: "100%" }}>
                             <CardBody className="text-center" >
-                                <CardSubtitle className="font-weight-bold" tag="h3">About us</CardSubtitle>
+                                <CardSubtitle className="font-weight-bold" tag="h3">Home</CardSubtitle>
                                 <hr />
                                 <CardText className="font-italic " tag="h5">Get a job easily now joining us. </CardText>
                                 <CardText className="font-italic" tag="h5">This platform will help you to find a suitable job according to your profile.</CardText>
@@ -54,8 +60,11 @@ class About extends Component {
                     </span>
                 </Jumbotron>
             </div>
-        );
-    }
+        );}
+        
+        
+       
+    
 }
 
 export default About;

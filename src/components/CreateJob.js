@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Form, FormGroup, Input, Container, Button, Label, Col, Alert, Row } from 'reactstrap';
 import JobService from '../services/JobService';
 import AdminHomeMenu from './AdminHomeMenu';
+import {Redirect} from 'react-router-dom';
 
 const intialState = {
     jobDes: '',
@@ -17,8 +18,13 @@ const intialState = {
 class CreateJob extends Component {
     constructor(props) {
         super(props)
+        const token = localStorage.getItem("token1")
+        let loggedIn = true;
+        if (token == null) {
+            loggedIn = false;
+        }
 
-        this.state = intialState;
+        this.state = { intialState, loggedIn }
 
         this.changeJobDesHandler = this.changeJobDesHandler.bind(this);
         this.changeReqSkillsHandler = this.changeReqSkillsHandler.bind(this);
@@ -111,6 +117,10 @@ class CreateJob extends Component {
     }
 
     render() {
+        if(this.state.loggedIn==false){
+            return <Redirect to="/admin-login" />
+            
+        }
         return (
             <div>
                 <Container>

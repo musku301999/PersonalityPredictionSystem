@@ -25,6 +25,7 @@ import JobList from './components/JobList';
 import CreateJob from './components/CreateJob';
 import UpdateJob from './components/UpdateJob';
 import Login from './components/Login';
+import Logout from './components/Logout';
 
 function App() {
 
@@ -47,6 +48,8 @@ function App() {
           <Route path="/create-job" component={CreateJob} exact></Route>
           <Route path="/updatejob/:id" component={UpdateJob} exact></Route>
           <Route path="/updatecv/:email" component={UpdateCv} exact></Route>
+          <Route path="/logout" component={Logout} exact></Route>
+
 
           <FooterComponent />
 
