@@ -2,18 +2,25 @@ import React, { Component } from 'react';
 import { Form, FormGroup, Input, Container, Button, Label, Col, Row } from 'reactstrap';
 import JobService from '../services/JobService';
 import AdminHomeMenu from './AdminHomeMenu';
+import {Redirect} from 'react-router-dom';
 
 class UpdateJob extends Component {
 
     constructor(props) {
         super(props)
+        const token = localStorage.getItem("token1")
+        let loggedIn = true;
+        if (token == null) {
+            loggedIn = false;
+        }
 
         this.state = {
             id: this.props.match.params.id,
             jobDes: '',
             reqSkills: '',
             experience: '',
-            qualification: ''
+            qualification: '',
+            loggedIn
         }
 
         this.changeJobDesHandler = this.changeJobDesHandler.bind(this);
@@ -73,6 +80,10 @@ class UpdateJob extends Component {
     }
 
     render() {
+        if(this.state.loggedIn==false){
+            return <Redirect to="/admin-login" />
+            
+        }
         return (
             <div>
                 <Container>

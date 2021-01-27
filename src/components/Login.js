@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 
 import { ToastContainer, toast } from 'react-toastify';
 import CandidateService from '../services/CandidateService'
@@ -6,12 +7,19 @@ import CandidateService from '../services/CandidateService'
 class Login extends Component {
     constructor(props) {
         super(props);
+        const token1 =localStorage.getItem("token")
+        let loggedIn=true;
+        if(token1==null){
+            loggedIn=false;
+        }
         this.state = {
 
             email: '',
             password: '',
             emailError: "",
-            passError: ""
+            passError: "",
+            loggedIn
+
         }
 
         this.changeCandidateEmailHandler = this.changeCandidateEmailHandler.bind(this);
@@ -54,10 +62,13 @@ class Login extends Component {
             email: this.state.email,
             password: this.state.password
         };
+        
         console.log(JSON.stringify(candidate));
         CandidateService.candLogin(candidate).then(res => {
-            toast.success("success")
-            this.props.history.push("/home")
+            localStorage.setItem("token","abc")
+        
+            this.setState({loggedIn:true});
+            this.props.history.push('/home')
         }, error => {
             toast.error("Check Your Email and Password ")
             // this.cancel();
@@ -86,7 +97,10 @@ class Login extends Component {
         this.setState({ password: event.target.value });
     }
 
-    render() {
+    render() { 
+        if(this.state.loggedIn==true){
+            <Redirect to='/home'/>
+        }
         return (
             <div>
                 <div className="container">

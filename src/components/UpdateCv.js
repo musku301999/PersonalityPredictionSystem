@@ -4,6 +4,7 @@ import axios from 'axios';
 import baseUrl from '../services/BootApi'
 
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 
 import CandidateCvServices from '../services/CandidateCvServices';
 import AdminHomeMenu from './AdminHomeMenu';
@@ -11,6 +12,12 @@ import AdminHomeMenu from './AdminHomeMenu';
 class UpdateCv extends Component {
   constructor(props) {
     super(props)
+    const token = localStorage.getItem("token")
+    let loggedIn = true;
+    if (token == null) {
+      loggedIn = false;
+    }
+
     this.state = {
       candidateName: '',
       email: this.props.match.params.email,
@@ -24,9 +31,9 @@ class UpdateCv extends Component {
       phoneNoLengthError: '',
       qualificationError: '',
       experienceError: '',
-      skillError: ''
+      skillError: '',
 
-
+loggedIn
     }
 
     this.candidateNameChangeHandler = this.candidateNameChangeHandler.bind(this);
@@ -147,6 +154,10 @@ class UpdateCv extends Component {
 
 
   render() {
+    if(this.state.loggedIn==false){
+      return <Redirect to="/candidate-login" />
+      
+  }
     return (
       <div>
         <Container>

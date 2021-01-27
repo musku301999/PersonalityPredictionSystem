@@ -1,12 +1,30 @@
-import React from 'react'
+
 import { Jumbotron } from 'reactstrap'
 import CandidateHomeMenu from '../components/CandidateHomeMenu'
 import { Container, Row, Col } from 'reactstrap';
 
-function CandidateHomePage() {
-    return (
-        <div>
-            <Container><Row> <Col md={4}>
+import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
+
+class CandidateHomePage extends Component {
+    constructor(props){
+        super(props)
+        const token =localStorage.getItem("token")
+    let loggedIn=true;
+    if(token==null){
+        loggedIn=false;
+    }
+    this.state={
+        loggedIn
+    }
+        }
+    render() {
+        if(this.state.loggedIn==false){
+            return <Redirect to="/candidate-login" />
+        }
+        return (
+            <div>
+                <Container><Row> <Col md={4}>
                 <CandidateHomeMenu />
             </Col>
                 <Col md={8} id="column">
@@ -17,11 +35,9 @@ function CandidateHomePage() {
                     </Jumbotron>
                 </Col></Row></Container>
 
-
-
-
-        </div>
-
-    )
+            </div>
+        );
+    }
 }
-export default CandidateHomePage
+
+export default CandidateHomePage;

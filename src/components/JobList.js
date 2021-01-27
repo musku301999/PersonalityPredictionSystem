@@ -2,12 +2,20 @@ import React, { Component, Fragment } from 'react';
 import { Table, Button, Row, Container, Col } from 'reactstrap';
 import JobService from '../services/JobService';
 import AdminHomeMenu from '../components/AdminHomeMenu'
+import { Redirect } from 'react-router-dom';
+
 class JobList extends Component {
     constructor(props) {
         super(props)
+        const token = localStorage.getItem("token1")
+    let loggedIn = true;
+    if (token == null) {
+      loggedIn = false;
+    }
 
         this.state = {
-            jobs: []
+            jobs: [],
+            loggedIn
         }
 
         this.addJob = this.addJob.bind(this);
@@ -38,6 +46,10 @@ class JobList extends Component {
     }
 
     render() {
+        if(this.state.loggedIn==false){
+            return <Redirect to="/admin-login" />
+            
+        }
         console.log("Jobs : ", this.state.jobs)
         return (
             <div>

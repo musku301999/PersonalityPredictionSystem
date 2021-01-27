@@ -1,6 +1,8 @@
 import React, { Component, Fragment } from 'react';
 
 import CandidateCvServices from '../services/CandidateCvServices';
+import { Redirect } from 'react-router-dom';
+
 
 import {
     Card,
@@ -21,8 +23,15 @@ import CandidateHomeMenu from './CandidateHomeMenu';
 class ViewCv extends Component {
     constructor(props) {
         super(props)
+        const token = localStorage.getItem("token")
+    let loggedIn = true;
+    if (token == null) {
+      loggedIn = false;
+    }
+
         this.state = {
-            candidates: []
+            candidates: [],
+            loggedIn
         }
         this.editcv = this.editcv.bind(this);
         this.deletecv = this.deletecv.bind(this);
@@ -45,6 +54,10 @@ class ViewCv extends Component {
         });
     }
     render() {
+        if(this.state.loggedIn==false){
+            return <Redirect to="/candidate-login" />
+            
+        }
         return (
             <div>
                 <Container>

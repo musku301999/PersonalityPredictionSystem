@@ -7,7 +7,7 @@ class AdminHomeMenu extends Component {
             <ListGroup style={{ height: "100%" }}>
                 <ListGroupItem tag="a" href="/cv" action>Review CVs</ListGroupItem>
                 <ListGroupItem tag="a" href="/job" action>Job</ListGroupItem>
-                <ListGroupItem tag="a" href="/" action>Logout</ListGroupItem>
+                <ListGroupItem tag="a" href="/logout" action>Logout</ListGroupItem>
             </ListGroup>
         );
     }
