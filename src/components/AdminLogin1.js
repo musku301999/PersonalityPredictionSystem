@@ -85,7 +85,7 @@ class AdminLogin1 extends Component {
 
     render() {
         return (
-            <div style={{backgroundImage: `url("../images/background1.svg")`}}>
+            <div>
                 <div className="container">
 
                     <div className="row">
@@ -94,7 +94,7 @@ class AdminLogin1 extends Component {
                             <div className="card-body">
                                 <form>
 
-                                    <div className="form-group" style>
+                                    <div className="form-group">
                                         <label>Email</label>
                                         <input placeholder="Enter Your Email" type="email" name="email"
                                             className="form-control" value={this.state.email}
