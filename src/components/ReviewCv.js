@@ -22,7 +22,10 @@ class ReviewCv extends Component {
 
         this.reviewCv = this.reviewCv.bind(this);
     }
+    editcv(email) {
+        this.props.history.push(`/validate-cv/${email}`);
 
+    }
     componentDidMount() {
         AppliedJobService.getCv().then(res => {
             this.setState({ applicants: res.data });
@@ -58,6 +61,7 @@ class ReviewCv extends Component {
                                                 <th>Candidate Experience</th>
                                                 <th>Skill</th>
                                                 <th>Applied for Job</th>
+                                                <th>Cv Status</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
@@ -73,9 +77,10 @@ class ReviewCv extends Component {
                                                     <td> {applicant.experience}</td>
                                                     <td> {applicant.skill}</td>
                                                     <td>{applicant.appliedjob}</td>
+                                                    <td>{applicant.result}</td>
                                                             <td>
                                                                 <Button color='info' outline size='sm'
-                                                                    onClick={() => this.reviewCv(applicant.applicantId)}> Review</Button>
+                                                                onClick={() => this.editcv(applicant.email)} > Review</Button>
                                                             </td>
                                                         </tr>
                                                 )
