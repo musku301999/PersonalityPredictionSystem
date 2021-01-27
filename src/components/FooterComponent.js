@@ -8,7 +8,7 @@ class FooterComponent extends Component {
                 <br />
                 <Card style={{ width: "100%", backgroundColor: "#C1C8E4", color: "dark", height: "60px" }}>
                     <CardTitle>
-                        <p className='text-center'>All rights reserved 2021 @PPP<br />❤️❤️❤️</p>
+                        <p className='text-center'>All rights reserved 2021 @PPS<br />----****----****----</p>
                     </CardTitle>
                 </Card>
             </Container>

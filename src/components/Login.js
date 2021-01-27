@@ -3,15 +3,12 @@ import { Redirect } from 'react-router-dom';
 
 import { ToastContainer, toast } from 'react-toastify';
 import CandidateService from '../services/CandidateService'
+import CandidateHomePage from './CandidateHomePage';
 
 class Login extends Component {
     constructor(props) {
         super(props);
-        const token1 =localStorage.getItem("token")
-        let loggedIn=true;
-        if(token1==null){
-            loggedIn=false;
-        }
+        let loggedIn=false;
         this.state = {
 
             email: '',
@@ -31,12 +28,7 @@ class Login extends Component {
         let emailError = "";
         let passError = "";
 
-        if (this.state.email) {
-            var pattern = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
-            if ((this.state.email) != pattern) {
-                emailError = 'Enter Valid Email'
-            }
-        }
+        
         if (!this.state.email) {
             emailError = "Email cannot be blank"
         }
@@ -57,22 +49,24 @@ class Login extends Component {
     }
 
     saveCandidate = (e) => {
+        const isValid = this.validate();
         e.preventDefault();
         let candidate = {
             email: this.state.email,
             password: this.state.password
         };
-        
-        console.log(JSON.stringify(candidate));
-        CandidateService.candLogin(candidate).then(res => {
-            localStorage.setItem("token","abc")
-        
-            this.setState({loggedIn:true});
-            this.props.history.push('/home')
-        }, error => {
-            toast.error("Check Your Email and Password ")
-            // this.cancel();
-        })
+        if (isValid) {
+            console.log(JSON.stringify(candidate));
+            CandidateService.candLogin(candidate).then(res => {
+                localStorage.setItem("token", "abc")
+                this.setState({ loggedIn: true });
+               
+                this.props.history.push('/home')
+            }, error => {
+                toast.error("Check Your Email and Password ")
+                // this.cancel();
+            })
+        }
     }
 
     handleSubmit = event => {
@@ -90,6 +84,7 @@ class Login extends Component {
 
     changeCandidateEmailHandler = (event) => {
         this.setState({ email: event.target.value });
+
     }
 
 
@@ -97,10 +92,8 @@ class Login extends Component {
         this.setState({ password: event.target.value });
     }
 
-    render() { 
-        if(this.state.loggedIn==true){
-            <Redirect to='/home'/>
-        }
+    render() {
+        
         return (
             <div>
                 <div className="container">
@@ -131,7 +124,7 @@ class Login extends Component {
                                     <div>
                                         <a href="/candidate-register">Not a user? Click here</a>
 
-                                        <a  href="/" style={{marginLeft:"230px"}}>Back to home</a>
+                                        <a href="/" style={{ marginLeft: "230px" }}>Back to home</a>
                                     </div>
                                     <ToastContainer />
                                 </form>

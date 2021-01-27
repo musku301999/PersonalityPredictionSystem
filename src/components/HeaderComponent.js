@@ -1,15 +1,18 @@
 import React, { Component } from 'react';
-import { Card, CardBody } from 'reactstrap';
-
+import { Card, CardBody, Col, Row } from 'reactstrap';
+import logos from '../images/logo.JPG'
 class HeaderComponent extends Component {
     render() {
         return (
             <div>
                 <Card className="my-1" style={{ width: "100%", backgroundColor: "#8860D0", color: "whitesmoke", height: "100%" }}>
                     <CardBody>
-                        <h1 className="text-center my-2">
+                        
+                            <h1 className="text-center my-2">
                             Personality Prediction System
                             </h1>
+                            
+                        
                     </CardBody>
                 </Card>
                 <br />

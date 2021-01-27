@@ -29,7 +29,7 @@ class CandidateHomePage extends Component {
             </Col>
                 <Col md={8} id="column">
                     <Jumbotron>
-                        <h1>Welcome User</h1>
+                        <h1>Welcome</h1>
                         <h2>You are just one step away in building your career.</h2>
                         <h3>Click on Cv to Create your Cv and Start Applying for Jobs.</h3>
                     </Jumbotron>

@@ -6,12 +6,14 @@ import CandidateHomePage from './components/CandidateHomePage';
 import CreateCv from './components/CreateCv';
 import ViewCv from './components/ViewCv';
 import UpdateCv from './components/UpdateCv';
+import Result from './components/Result';
 
 import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
+  Link,
+  Redirect
 } from "react-router-dom";
 import ApllyJobHere from './components/ApllyJobHere';
 import HeaderComponent from './components/HeaderComponent';
@@ -52,7 +54,8 @@ function App() {
           <Route path="/updatejob/:id" component={UpdateJob} exact></Route>
           <Route path="/updatecv/:email" component={UpdateCv} exact></Route>
           <Route path="/logout" component={Logout} exact></Route>
-
+          <Route path="/result" component={Result} exact></Route>
+        
 
           <FooterComponent />
 

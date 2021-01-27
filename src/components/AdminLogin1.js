@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import { toast,ToastContainer } from 'react-toastify';
 import Adminservice from '../services/Adminservice'
-
+import web1 from '../images/background1.svg';
+import web2 from '../images/background2.svg';
 
 class AdminLogin1 extends Component {
     constructor(props) {
@@ -24,23 +26,12 @@ class AdminLogin1 extends Component {
         let emailError = "";
         let passError = "";
 
-        if (this.state.email) {
-            var pattern = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
-            if ((this.state.email) != pattern) {
-                emailError = 'Enter Valid Email'
-            }
-        }
-        if (!this.state.email) {
-            emailError = "Email cannot be blank"
-        }
-
         if (!this.state.password) {
-            passError = "Password cannot be blank"
-        }
-        if (this.state.password.length > 8) {
-            passError = "Enter 8 characters only"
-        }
-
+            passError = "Password cannot be blank";
+          }
+          if (!this.state.email) {
+            emailError = "Email cannot be blank";
+          }
 
         if (emailError || passError) {
             this.setState({ emailError, passError });
@@ -50,11 +41,13 @@ class AdminLogin1 extends Component {
     }
 
     saveCandidate = (e) => {
+        const isValid = this.validate();
         e.preventDefault();
         let admin = {
             email: this.state.email,
             password: this.state.password
         };
+        if(isValid){
         console.log(JSON.stringify(admin));
         Adminservice.createAdmin(admin).then(res => {
             localStorage.setItem("token1","abc")
@@ -62,7 +55,10 @@ class AdminLogin1 extends Component {
             this.setState({loggedIn:true});
             console.log("success")
             this.props.history.push("/admin")
+        },error=>{
+            toast.error("Invalid Email or Password")
         })
+    }
     }
 
     handleSubmit = event => {
@@ -89,7 +85,7 @@ class AdminLogin1 extends Component {
 
     render() {
         return (
-            <div>
+            <div style={{backgroundImage: `url("../images/background1.svg")`}}>
                 <div className="container">
 
                     <div className="row">
@@ -98,7 +94,7 @@ class AdminLogin1 extends Component {
                             <div className="card-body">
                                 <form>
 
-                                    <div className="form-group">
+                                    <div className="form-group" style>
                                         <label>Email</label>
                                         <input placeholder="Enter Your Email" type="email" name="email"
                                             className="form-control" value={this.state.email}
@@ -118,6 +114,7 @@ class AdminLogin1 extends Component {
                                     <div>
                                         <a href="/" style={{marginLeft:"350px"}}>Back to home</a>
                                     </div>
+                                    <ToastContainer />
                                 </form>
                             </div>
                         </div>

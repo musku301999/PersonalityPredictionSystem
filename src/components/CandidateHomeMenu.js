@@ -24,7 +24,7 @@ const CandidateHomeMenu = (props) => {
         </Dropdown>
       </ListGroupItem>
      
-      <ListGroupItem tag="a" href="#!" action>View Results</ListGroupItem>
+      <ListGroupItem tag="a" href="/result" action>View Results</ListGroupItem>
       <ListGroupItem tag="a" href="/logout" action>Logout</ListGroupItem>
 
     </ListGroup>
