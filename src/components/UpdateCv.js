@@ -2,6 +2,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import { Button, Form, FormGroup, Label, Input, FormText, Alert, Container, Col, Row } from 'reactstrap';
 import axios from 'axios';
 import baseUrl from '../services/BootApi'
+import CandidateHomeMenu from './CandidateHomeMenu'
 
 import React, { Component } from 'react';
 
@@ -18,13 +19,15 @@ class UpdateCv extends Component {
       qualification: '',
       experience: '',
       skill: '',
+      appliedjob: '',
       candidateNameError: '',
       emailError: '',
       phoneNoError: '',
       phoneNoLengthError: '',
       qualificationError: '',
       experienceError: '',
-      skillError: ''
+      skillError: '',
+      appliedjobError: ''
 
 
     }
@@ -35,6 +38,7 @@ class UpdateCv extends Component {
     this.qualChangeHandler = this.qualificationChangeHandler.bind(this);
     this.experienceChangeHandler = this.experienceChangeHandler.bind(this);
     this.skillChangeHandler = this.skillChangeHandler.bind(this);
+    this.appliedjobChangeHandler = this.appliedjobChangeHandler.bind(this);
     this.updateCv = this.updateCv.bind(this);
 
   }
@@ -48,7 +52,8 @@ class UpdateCv extends Component {
 
         qualification: cv.qualification,
         experience: cv.experience,
-        skill: cv.skill
+        skill: cv.skill,
+        appliedjob: cv.appliedjob
 
       })
     })
@@ -66,6 +71,7 @@ class UpdateCv extends Component {
     let qualificationError = '';
     let experienceError = '';
     let skillError = '';
+    let appliedjobError = '';
     if (!this.state.candidateName) {
       candidateNameError = "Name cannot be blank";
     }
@@ -84,12 +90,15 @@ class UpdateCv extends Component {
     if (!this.state.skill) {
       skillError = "Skill cannot be blank";
     }
+    if (!this.state.appliedjob) {
+      appliedjobError = "You cannot create your cv without applying for a job!";
+    }
     if (this.state.phoneNo.length != 10) {
       phoneNoLengthError = "Mobile number should be of 10 digits"
     }
 
-    if (emailError || candidateNameError || phoneNoError || qualificationError || experienceError || skillError || phoneNoLengthError) {
-      this.setState({ emailError, candidateNameError, phoneNoError, qualificationError, experienceError, skillError, phoneNoLengthError });
+    if (emailError || candidateNameError || phoneNoError || qualificationError || experienceError || skillError || appliedjobError || phoneNoLengthError) {
+      this.setState({ emailError, candidateNameError, phoneNoError, qualificationError, experienceError, skillError,appliedjobError, phoneNoLengthError });
       return false;
     }
     return true;
@@ -103,7 +112,8 @@ class UpdateCv extends Component {
     let cv = {
       candidateName: this.state.candidateName, email: this.state.email,
       phoneNo: this.state.phoneNo, experience: this.state.experience,
-      qualification: this.state.qualification, skill: this.state.skill
+      qualification: this.state.qualification, skill: this.state.skill,
+      appliedjob: this.state.appliedjob
     };
     if (isValid) {
       console.log("cv:" + JSON.stringify(cv));
@@ -111,7 +121,7 @@ class UpdateCv extends Component {
 
       CandidateCvServices.updateCv(cv, this.state.email).then(res => {
         this.props.history.push('/view-cv')
-        toast.success("Cv created succesfully.")
+        toast.success("Cv updated succesfully.")
         this.cancel();
 
 
@@ -141,6 +151,9 @@ class UpdateCv extends Component {
   skillChangeHandler(event) {
     this.setState({ skill: event.target.value });
   }
+  appliedjobChangeHandler(event) {
+    this.setState({ appliedjob: event.target.value });
+  }
   cancel() {
     this.props.history.push('/view-cv');
   }
@@ -152,7 +165,7 @@ class UpdateCv extends Component {
         <Container>
           <Row>
             <Col md={4}>
-              <AdminHomeMenu />
+              <CandidateHomeMenu />
             </Col>
             <Col md={8}>
               <div style={{ 'position': 'relative', 'overflowY': 'auto', 'height': '60vh', 'display': 'block' }}>
@@ -204,6 +217,13 @@ class UpdateCv extends Component {
                         value={this.state.skill} onChange={this.skillChangeHandler} />
                       <div style={{ color: "red" }}>{this.state.skillError}</div>
                     </FormGroup>
+
+                    <FormGroup>
+                    <Label for="appliedjob">Apply Job For </Label>
+                    <Input type="text" name="text" id="exampleText" placeholder="Enter the Job Position you want to apply for"
+                      value={this.state.appliedjob} onChange={this.appliedjobChangeHandler} />
+                    <div style={{ color: "red" }}>{this.state.appliedjobError}</div>
+                  </FormGroup>
 
 
                     <Button type="submit" color="info" onClick={this.updateCv}>Submit</Button>

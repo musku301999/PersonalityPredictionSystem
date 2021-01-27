@@ -9,6 +9,7 @@ const CandidateHomeMenu = (props) => {
   return (
     <ListGroup style={{ height: "100%" }}>
       <ListGroupItem tag="a" href="/home" action>Home</ListGroupItem>
+      <ListGroupItem tag="a" href="/apply-job" action>View Jobs Vacancy</ListGroupItem>
       <ListGroupItem tag="a" href="#!" action>
         <Dropdown isOpen={dropdownOpen} toggle={toggle}>
           <DropdownToggle caret color="white">
@@ -22,7 +23,7 @@ const CandidateHomeMenu = (props) => {
           </DropdownMenu>
         </Dropdown>
       </ListGroupItem>
-      <ListGroupItem tag="a" href="/apply-job" action>Apply Job</ListGroupItem>
+     
       <ListGroupItem tag="a" href="#!" action>View Results</ListGroupItem>
       <ListGroupItem tag="a" href="#!" action>Logout</ListGroupItem>
 

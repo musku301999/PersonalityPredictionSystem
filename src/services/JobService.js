@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const JOB_BASE_URL = 'http://localhost:8080/job/getAllJob';
+const JOB_BASE_URL = 'http://localhost:8082/job/getAllJob';
 
 class JobService {
 
@@ -9,19 +9,19 @@ class JobService {
     }
 
     createJob(job) {
-        return axios.post("http://localhost:8080/job/admin/add", job);
+        return axios.post("http://localhost:8082/job/admin/add", job);
     }
 
     getJobById(id) {
-        return axios.get("http://localhost:8080/job/admin/get/" + id);
+        return axios.get("http://localhost:8082/job/admin/get/" + id);
     }
 
     updateJob(job, id) {
-        return axios.put("http://localhost:8080/job/update/" + id, job);
+        return axios.put("http://localhost:8082/job/update/" + id, job);
     }
 
     deleteJob(id) {
-        return axios.delete("http://localhost:8080/job/admin/delete/" + id);
+        return axios.delete("http://localhost:8082/job/admin/delete/" + id);
     }
 
 }

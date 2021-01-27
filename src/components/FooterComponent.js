@@ -4,7 +4,7 @@ import { Card, CardTitle, Container } from 'reactstrap';
 class FooterComponent extends Component {
     render() {
         return (
-            <Container>
+            <Container className='fixed-bottom'>
                 <br />
                 <Card style={{ width: "100%", backgroundColor: "#C1C8E4", color: "dark", height: "60px" }}>
                     <CardTitle>

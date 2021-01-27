@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const CANDIDATE_API_BASE_URL = "http://localhost:8080/candidate/create";
+const CANDIDATE_API_BASE_URL = "http://localhost:8082/candidate/create";
 
 class CandidateService {
 
@@ -8,7 +8,7 @@ class CandidateService {
         return axios.post(CANDIDATE_API_BASE_URL, candidate);
     }
     candLogin(candidate) {
-        return axios.post("http://localhost:8080/candidateReg/login", candidate)
+        return axios.post("http://localhost:8082/candidateReg/login", candidate)
     }
 }
 

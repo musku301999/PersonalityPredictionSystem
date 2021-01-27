@@ -17,13 +17,15 @@ class CreateCv extends Component {
       qual: '',
       exp: '',
       skill: '',
+      appliedjob: '',
       nameError: '',
       emailError: '',
       numberError: '',
       numberLengthError: '',
       qualError: '',
       expError: '',
-      skillError: ''
+      skillError: '',
+      appliedjobError: ''
 
 
     }
@@ -34,6 +36,7 @@ class CreateCv extends Component {
     this.qualChangeHandler = this.qualChangeHandler.bind(this);
     this.expChangeHandler = this.expChangeHandler.bind(this);
     this.skillChangeHandler = this.skillChangeHandler.bind(this);
+    this.appliedjobChangeHandler = this.appliedjobChangeHandler.bind(this);
     this.save = this.save.bind(this)
 
   }
@@ -46,13 +49,15 @@ class CreateCv extends Component {
       qual: '',
       exp: '',
       skill: '',
+      appliedjob: '',
       nameError: '',
       emailError: '',
       numberError: '',
       numberLengthError: '',
       qualError: '',
       expError: '',
-      skillError: ''
+      skillError: '',
+      appliedjobError: ''
 
 
     });
@@ -67,6 +72,7 @@ class CreateCv extends Component {
     let qualError = '';
     let expError = '';
     let skillError = '';
+    let appliedjobError = '';
     if (!this.state.name) {
       nameError = "Name cannot be blank";
     }
@@ -85,12 +91,15 @@ class CreateCv extends Component {
     if (!this.state.skill) {
       skillError = "Skill cannot be blank";
     }
+    if (!this.state.appliedjob) {
+      appliedjobError = "You have to Apply for Job to create a Cv";
+    }
     if (this.state.number.length != 10) {
       numberLengthError = "Mobile number should be of 10 digits"
     }
 
     if (emailError || nameError || numberError || qualError || expError || skillError || numberLengthError) {
-      this.setState({ emailError, nameError, numberError, qualError, expError, skillError, numberLengthError });
+      this.setState({ emailError, nameError, numberError, qualError, expError, skillError,appliedjobError, numberLengthError });
       return false;
     }
     return true;
@@ -103,7 +112,7 @@ class CreateCv extends Component {
     const isValid = this.validate();
     let cv = {
       candidateName: this.state.name, email: this.state.email, phoneNo: this.state.number, experience: this.state.exp,
-      qualification: this.state.qual, skill: this.state.skill
+      qualification: this.state.qual, skill: this.state.skill, appliedjob: this.state.appliedjob
     }
     if (isValid) {
       console.log("cv=>" + JSON.stringify(cv));
@@ -139,6 +148,9 @@ class CreateCv extends Component {
   }
   skillChangeHandler(event) {
     this.setState({ skill: event.target.value });
+  }
+  appliedjobChangeHandler(event){
+    this.setState({appliedjob:event.target.value});
   }
 
 
@@ -202,7 +214,13 @@ class CreateCv extends Component {
                         value={this.state.skill} onChange={this.skillChangeHandler} />
                       <div style={{ color: "red" }}>{this.state.skillError}</div>
                     </FormGroup>
-
+                    
+                    <FormGroup>
+                      <Label for="appliedjob">Apply Job For </Label>
+                      <Input type="text" name="text" id="exampleText" placeholder="Enter the Job Position you want to apply for"
+                        value={this.state.appliedjob} onChange={this.appliedjobChangeHandler} />
+                      <div style={{ color: "red" }}>{this.state.appliedjobError}</div>
+                    </FormGroup>
 
                     <Button type="submit" color="primary" onClick={this.save}>Submit</Button>
                     <ToastContainer />

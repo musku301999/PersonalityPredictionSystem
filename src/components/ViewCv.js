@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
 
 import CandidateCvServices from '../services/CandidateCvServices';
 
@@ -31,6 +32,8 @@ class ViewCv extends Component {
     deletecv(email) {
         CandidateCvServices.deleteCv(email).then(res => {
             this.setState({ candidates: this.state.candidates.filter(cv => cv.email !== email) });
+            toast.success("Cv deleted succesfully.")
+           
         });
 
     }
@@ -66,6 +69,7 @@ class ViewCv extends Component {
                                                 <th> Qualification </th>
                                                 <th> Experience </th>
                                                 <th> Skill </th>
+                                                <th>Applied Job For</th>
                                                 <th> Actions</th>
                                             </tr>
 
@@ -81,6 +85,7 @@ class ViewCv extends Component {
                                                             <td> {cv.qualification}</td>
                                                             <td> {cv.experience}</td>
                                                             <td> {cv.skill}</td>
+                                                            <td>{cv.appliedjob}</td>
                                                             <td>
                                                                 <Button color="info mb-1" size="sm" onClick={() => this.editcv(cv.email)} outline  >Update</Button>
                                                                 <Button color="danger ml-1" size="sm" onClick={() => this.deletecv(cv.email)} outline  >Delete</Button>

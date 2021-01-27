@@ -1,96 +1,98 @@
-import React from 'react'
-import { Jumbotron, Card, CardBody, CardTitle, CardSubtitle, CardText, CardFooter, Button, Container, Row, Col } from "reactstrap"
-import { ListGroup, ListGroupItem, Dropdown, DropdownItem, DropdownToggle, DropdownMenu } from "reactstrap";
-import { useState } from 'react';
+import React, { Component, Fragment } from 'react';
+import { Table, Button, Row, Container, Col } from 'reactstrap';
+import JobService from '../services/JobService';
+import AdminHomeMenu from '../components/AdminHomeMenu'
 import CandidateHomeMenu from './CandidateHomeMenu';
 
 
-const ApllyJobHere = () => {
-  const [dropdownOpen, setDropdownOpen] = useState(false);
+class ApllyJobHere extends Component {
+  constructor(props) {
+      super(props)
 
-  const toggle = () => setDropdownOpen(prevState => !prevState);
-  return (
+      this.state = {
+          jobs: []
+      }
 
-    <div>
-      <Container>
-        <Row>
-          <Col md={4}>
-            <CandidateHomeMenu />
-          </Col>
-          <Col md={8}>
-            <Card>
+      // this.addJob = this.addJob.bind(this);
+      // this.editJob = this.editJob.bind(this);
+      // this.removeJob = this.removeJob.bind(this);
+  }
+
+  // removeJob(jobId) {
+
+  //     JobService.deleteJob(jobId).then(res => {
+  //         this.setState({ jobs: this.state.jobs.filter(job => job.jobId !== jobId) });
+  //         alert("Job deleted successfully");
+  //     });
+  // }
+
+  // editJob(id) {
+  //     this.props.history.push(`/updatejob/${id}`);
+  // }
+
+  componentDidMount() {
+      JobService.getJob().then(res => {
+          this.setState({ jobs: res.data });
+      });
+  }
+
+  // addJob() {
+  //     this.props.history.push('/create-job');
+  // }
+
+  render() {
+      console.log("Jobs : ", this.state.jobs)
+      return (
+          <div>
+              <Container>
+                  <Row>
+                      <Col md={3}>
+                          <CandidateHomeMenu />
+                      </Col>
+
+                      <Col md={9}>
+                          <Fragment>
+                              <div style={{ 'position': 'relative', 'overflowY': 'auto', 'height': '50vh', 'display': 'block' }}>
+                              <h2 className='text-center'> Job Vacancies </h2>
+                                    <Table bordered >
+                                  
+                                      {/* '#84CEEB, #5680E9, #54B9EA, #C1C8E4, #8860D0' */}
+                                      <thead style={{ 'backgroundColor': '#C1C8E4' }}>
+                                          <tr>
+                                              <th>Job Description</th>
+                                              <th>Req. Skills</th>
+                                              <th>Experience</th>
+                                              <th>Qualification</th>
+                                              
+                                          </tr>
+                                      </thead>
+                                      <tbody>
+                                          {
+                                              this.state.jobs.map(
+                                                  job =>
+                                                      <tr key={job.jobId}>
+                                                          <td>{job.jobDes}</td>
+                                                          <td>{job.reqSkills}</td>
+                                                          <td>{job.experience}</td>
+                                                          <td>{job.qualification}</td>
+                                                         
+                                                      </tr>
+                                              )
+                                          }
+                                      </tbody>
+                                  </Table>
+                              </div>
+                           
+
+                          </Fragment>
+                      </Col>
+                  </Row>
+              </Container>
+          </div>
 
 
-              <ListGroup style={{ height: "100%" }}>
 
-                <ListGroupItem tag="a" href="#!" action>
-                  <Dropdown isOpen={dropdownOpen} toggle={toggle}>
-                    <DropdownToggle carets color="Blue">
-                      Search By
-            </DropdownToggle>
-                    <DropdownMenu>
-                      <DropdownItem header>Job details</DropdownItem>
-
-
-                    </DropdownMenu>
-                  </Dropdown>
-                </ListGroupItem>
-
-              </ListGroup>
-
-
-              <Card className="text-left" style={{ width: "100%", backgroundColor: "", color: "whitesmoke", height: "100%" }}>
-                <CardBody>
-                  <h1 className="text-left my-2" style={{ color: 'black' }} >
-                    Job Deatils
-
-            </h1>
-                  <Container className="text-center" >
-                    <Button color="warning">Apply</Button>
-                  </Container>
-                </CardBody>
-              </Card>
-              <Card className="text-left" style={{ width: "100%", backgroundColor: "", color: "whitesmoke", height: "100%" }}>
-                <CardBody>
-                  <h1 className="text-left my-3" style={{ color: 'black' }} >
-                    Job Deatils
-
-            </h1>
-                  <Container className="text-center" >
-                    <Button color="warning">Apply</Button>
-                  </Container>
-                </CardBody>
-              </Card>
-
-
-              <Card className="text-left" style={{ width: "100%", backgroundColor: "", color: "whitesmoke", height: "100%" }}>
-                <CardBody>
-                  <h1 className="text-left my-3" style={{ color: 'black' }} >
-                    Job Deatils
-
-            </h1>
-                  <Container className="text-center" >
-                    <Button color="warning">Apply</Button>
-                  </Container>
-                </CardBody>
-              </Card>
-
-
-
-
-
-            </Card>
-          </Col>
-        </Row>
-      </Container>
-    </div>
-
-
-
-
-  )
+      );
+  }
 }
-
 export default ApllyJobHere;
-
-

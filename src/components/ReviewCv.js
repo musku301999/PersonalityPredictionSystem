@@ -18,7 +18,7 @@ class ReviewCv extends Component {
     }
 
     componentDidMount() {
-        AppliedJobService.getAppliedJob().then(res => {
+        AppliedJobService.getCv().then(res => {
             this.setState({ applicants: res.data });
         })
     }
@@ -41,9 +41,12 @@ class ReviewCv extends Component {
                                     <Table bordered>
                                         <thead style={{ 'backgroundColor': '#C1C8E4' }}>
                                             <tr>
+                                                <th>Candidate Name</th>
                                                 <th>Candidate Email</th>
-                                                <th>Candidate Skill</th>
+                                                <th>Phone No</th>
+                                                <th>Candidate Qualification</th>
                                                 <th>Candidate Experience</th>
+                                                <th>Skill</th>
                                                 <th>Applied for Job</th>
                                                 <th>Action</th>
                                             </tr>
@@ -52,11 +55,14 @@ class ReviewCv extends Component {
                                             {
                                                 this.state.applicants.map(
                                                     applicant =>
-                                                        <tr key={applicant.applicantId}>
-                                                            <td>{applicant.candEmail}</td>
-                                                            <td>{applicant.candSkill}</td>
-                                                            <td>{applicant.candExp}</td>
-                                                            <td>{applicant.appliedJobDes}</td>
+                                                    <tr key={applicant.email}>
+                                                    <td>{applicant.candidateName}</td>
+                                                    <td>{applicant.email}</td>
+                                                    <td> {applicant.phoneNo}</td>
+                                                    <td> {applicant.qualification}</td>
+                                                    <td> {applicant.experience}</td>
+                                                    <td> {applicant.skill}</td>
+                                                    <td>{applicant.appliedjob}</td>
                                                             <td>
                                                                 <Button color='info' outline size='sm'
                                                                     onClick={() => this.reviewCv(applicant.applicantId)}> Review</Button>
