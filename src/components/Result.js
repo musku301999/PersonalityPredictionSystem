@@ -1,12 +1,20 @@
 import React, { Component, Fragment } from 'react';
 import { Table, Button, Row, Col, Container } from 'reactstrap';
 import AppliedJobService from '../services/AppliedJobService';
+<<<<<<< HEAD
 import CandidateHomeMenu from '../components/CandidateHomeMenu'
 import AdminHomeMenu from './AdminHomeMenu';
 // import SearchByParam from './SearchByParam';
 // import CvService from '../services/CvService'
 import { Redirect } from 'react-router-dom';
 class ReviewCv extends Component {
+=======
+import CandidateHomeMenu from './CandidateHomeMenu';
+// import SearchByParam from './SearchByParam';
+// import CvService from '../services/CvService'
+import { Redirect } from 'react-router-dom';
+class Result extends Component {
+>>>>>>> 6b933da78a2880aecd8a3aa8d7a66d672352c7a7
 
     constructor(props) {
         super(props)
@@ -19,6 +27,7 @@ class ReviewCv extends Component {
         this.state = {
             applicants: [],
             loggedIn
+<<<<<<< HEAD
         }
 
         this.reviewCv = this.reviewCv.bind(this);
@@ -27,16 +36,24 @@ class ReviewCv extends Component {
         this.props.history.push(`/validate-cv/${email}`);
 
     }
+=======
+        } 
+    }
+    
+>>>>>>> 6b933da78a2880aecd8a3aa8d7a66d672352c7a7
     componentDidMount() {
         AppliedJobService.getCv().then(res => {
             this.setState({ applicants: res.data });
         })
     }
 
+<<<<<<< HEAD
     reviewCv(id) {
         this.props.history.push(`/acceptrejectcv/${id}`);
     }
 
+=======
+>>>>>>> 6b933da78a2880aecd8a3aa8d7a66d672352c7a7
     render() {
         if(this.state.loggedIn==false){
             return <Redirect to="/candidate-login" />
@@ -57,11 +74,16 @@ class ReviewCv extends Component {
                                             <tr>
                                                 <th>Candidate Name</th>
                                                 <th>Candidate Email</th>
+<<<<<<< HEAD
                                                 
                                                 
                                                 <th>Applied for Job</th>
                                                 <th>Cv Status</th>
                                                 
+=======
+                                                <th>Applied for Job</th>
+                                                <th>Cv Status</th>
+>>>>>>> 6b933da78a2880aecd8a3aa8d7a66d672352c7a7
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -71,11 +93,18 @@ class ReviewCv extends Component {
                                                     <tr key={applicant.email}>
                                                     <td>{applicant.candidateName}</td>
                                                     <td>{applicant.email}</td>
+<<<<<<< HEAD
                                                    
                                                     <td>{applicant.appliedjob}</td>
                                                     <td>{applicant.result}</td>
                                                     
                                                            
+=======
+                    
+                                                    <td>{applicant.appliedjob}</td>
+                                                    <td>{applicant.result}</td>
+
+>>>>>>> 6b933da78a2880aecd8a3aa8d7a66d672352c7a7
                                                         </tr>
                                                 )
                                             }
@@ -92,4 +121,8 @@ class ReviewCv extends Component {
     }
 }
 
+<<<<<<< HEAD
 export default ReviewCv;
+=======
+export default Result;
+>>>>>>> 6b933da78a2880aecd8a3aa8d7a66d672352c7a7

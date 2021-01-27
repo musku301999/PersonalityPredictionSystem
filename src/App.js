@@ -30,6 +30,7 @@ import UpdateJob from './components/UpdateJob';
 import Login from './components/Login';
 import Logout from './components/Logout';
 import AcceptRejectCv from './components/AcceptRejectCv';
+import Result from './components/Result';
 
 function App() {
 
@@ -49,13 +50,19 @@ function App() {
           <Route path="/admin" component={Home} exact></Route>
           <Route path="/cv" component={ReviewCv} exact></Route>
           <Route path="/validate-cv/:email" component={AcceptRejectCv} exact></Route>
+          <Route path="/result" component={Result} exact></Route>
           <Route path="/job" component={JobList} exact></Route>
           <Route path="/create-job" component={CreateJob} exact></Route>
           <Route path="/updatejob/:id" component={UpdateJob} exact></Route>
           <Route path="/updatecv/:email" component={UpdateCv} exact></Route>
           <Route path="/logout" component={Logout} exact></Route>
+<<<<<<< HEAD
           <Route path="/result" component={Result} exact></Route>
         
+=======
+          
+
+>>>>>>> 6b933da78a2880aecd8a3aa8d7a66d672352c7a7
 
           <FooterComponent />
 
